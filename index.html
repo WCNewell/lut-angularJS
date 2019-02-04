@@ -3,30 +3,78 @@
 <head>
     <title>AngularJS for Everyone</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.js"></script>
     <script src='directory.js'></script>
     <style>
+        ul {
+            list-style: none;
+        }
+        li {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        li span {
+            display: inline-block;
+            line-height: 50px;
+        }
+        li img {
+            margin-right: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
         .over-thirty {
-            background: red;
+            background: pink;
             color: white;
         }
         .under-thirty {
-            background: blue;
+            background: grey;
             color: white
         }
         .hidden {
             display: none;
         }
+        ul.ng-enter {
+            animation: fadeIn 0.2s linear;
+            /* transition: 1s ease all;
+            opacity: 0;
+            transform: translateX(-100%) */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 2;
+            }
+        }
+        /* ul.ng-enter.ng-enter-active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        ul.ng-leave {
+            transition: 1s ease all;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        ul.ng-leave.ng-leave-active {
+            opacity: 0;
+            transform: translateX(100%)
+        } */
     </style>
 </head>
 <body ng-controller="directoryController as dirList">
     <input type='text' ng-model='search'>
-    <ul ng-class="{'hidden': !dirList.toggle}">
+    <ul ng-if="dirList.toggle">
         <li ng-repeat="item in dirList.list | filter:search"
-            ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'">
-            {{item.name}} - <em>{{item.age}}</em>
+            ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'"
+            ng-include="'person.html'">     
         </li>
     </ul>
-    <button ng-click="dirList.toggle = true">Show Names</button>
+    <button ng-show="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
+    <button ng-show="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+
     <form ng-submit='dirList.addPerson()'>
         <input type="type" placeholder="Name" ng-model='dirList.Name'>
         <input type="number" placeholder="Age" ng-model='dirList.Age'>

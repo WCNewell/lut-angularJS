@@ -1,4 +1,4 @@
-angular.module('directoryApp', [])
+angular.module('directoryApp', ['ngAnimate'])
     .controller('directoryController', function() {
 
         var dirList = this
@@ -6,10 +6,10 @@ angular.module('directoryApp', [])
         dirList.toggle=false
 
         dirList.list = [
-            {name: 'Clark', age: 46},
-            {name: 'Bobbicat', age: 13},
-            {name: 'Ashlee', age: 37},
-            {name: 'Sophie', age: 4}
+            {name: 'Clark', age: 46, img: './images/Woofy.jpg'},
+            {name: 'Bobbicat', age: 13, img: './images/Meowy.jpeg'},
+            {name: 'Ashlee', age: 37, img: './images/Poody.jpg'},
+            {name: 'Sophie', age: 4, img: './images/Barky.jpeg'}
         ]
 
         dirList.addPerson = function() {
