@@ -4,6 +4,7 @@
     <title>AngularJS for Everyone</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.js"></script>
+    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
     <script src='directory.js'></script>
     <style>
         ul {
@@ -64,8 +65,15 @@
         } */
     </style>
 </head>
-<body ng-controller="directoryController as dirList">
-    <input type='text' ng-model='search'>
+<!-- <body ng-controller="directoryController as dirList"> -->
+    <body>
+    <main>
+        <h1>From index.html inside main</h1>
+        <ui-view>
+            From index.html inside ui-view
+        </ui-view>
+    </main>
+    <!-- <input type='text' ng-model='search'>
     <ul ng-if="dirList.toggle">
         <li ng-repeat="item in dirList.list | filter:search"
             ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'"
@@ -79,6 +87,6 @@
         <input type="type" placeholder="Name" ng-model='dirList.Name'>
         <input type="number" placeholder="Age" ng-model='dirList.Age'>
         <input type="submit" value="Submit">
-    </form>
-</body>
+    </form> -->
+    </body>
 </html>
