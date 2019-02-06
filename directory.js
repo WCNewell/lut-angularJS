@@ -4,13 +4,16 @@ angular.module('directoryApp', ['ngAnimate', 'ui.router'])
         $urlRouterProvider.otherwise('/')
 
         $stateProvider
+
         .state('home', {
             url: '/',
-            template: '<h1>Hello</h1>'
+            templateUrl: '/static/home.html',
+            controller: 'directoryController as dirList'
         })
+
         .state('about', {
             url: '/about',
-            template: '<h1>About</h1>'
+            templateUrl: '/static/about.html'
         })
     })
     .controller('directoryController', function() {
@@ -30,5 +33,10 @@ angular.module('directoryApp', ['ngAnimate', 'ui.router'])
             dirList.list.push({name:dirList.name, age: dirList.age})
             dirList.name = ''
             dirList.age = 0
+        }
+    })
+    .directive('directoryPerson', function() {
+        return {
+            templateUrl: 'directory-person.html'
         }
     })
