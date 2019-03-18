@@ -1,19 +1,23 @@
 <h1>Hello Home, from inside home.html</h1>
 
-<input type='text' ng-model='search'>
-   
-    <ul ng-if="dirList.toggle">
-        <li ng-repeat="item in dirList.list | filter:search"
-            ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'">
-            <directory-person></directory-person>
-        </li>
-    </ul>
+<body ng-controller="directoryController as dirList">
 
-<button ng-show="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
-<button ng-show="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+    <input type='text' ng-model='search'>
+    
+        <ul ng-if="dirList.toggle">
+            <li ng-repeat="item in dirList.list | filter:search"
+                ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'">
+                <directory-person></directory-person>
+            </li>
+        </ul>
 
-<form ng-submit='dirList.addPerson()'>
-    <input type="type" placeholder="Name" ng-model='dirList.Name'>
-    <input type="number" placeholder="Age" ng-model='dirList.Age'>
-    <input type="submit" value="Submit">
-</form>
+    <button ng-show="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
+    <button ng-show="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+
+    <form ng-submit="dirList.addPerson()">
+        <input type="text" placeholder="Name" ng-model="dirList.Name">
+        <input type="number" placeholder="Age" ng-model="dirList.Age">
+        <input type="submit" value="Submit">
+    </form>
+
+</body>

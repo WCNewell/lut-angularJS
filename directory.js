@@ -5,22 +5,22 @@ angular.module('directoryApp', ['ngAnimate', 'ui.router'])
 
         $stateProvider
 
-        .state('home', {
-            url: '/',
-            templateUrl: '/static/home.html',
-            controller: 'directoryController as dirList'
-        })
+            .state('home', {
+                url: '/',
+                templateUrl: '/static/home.html',
+                controller: 'directoryController as dirList'
+            })
 
-        .state('about', {
-            url: '/about',
-            templateUrl: '/static/about.html'
-        })
+            .state('about', {
+                url: '/about',
+                templateUrl: '/static/about.html'
+            })
     })
     .controller('directoryController', function() {
 
-        var dirList = this
+        var dirList = this // this is referring to the controller
 
-        dirList.toggle=false
+        dirList.toggle = false
 
         dirList.list = [
             {name: 'Clark', age: 46, img: './images/Woofy.jpg'},
